@@ -138,7 +138,7 @@ void fftTask(void *pvParameters){
           int bin = i * BANDSIZE + j + STARTBIN; //sum of bin in range
           sum += vReal[bin];
         }
-        ledmatrix[i] = (ledmatrix[i]+sqrt(sum))/2;
+        ledmatrix[i] = (ledmatrix[i]+sqrt(sum))/3;
       }
       for (int i = 3; i < LED_COLUMN; i++) { // led column 4-12
         double sum = 0;
@@ -146,7 +146,7 @@ void fftTask(void *pvParameters){
           int bin = (i - 3) * BANDSIZE2 + j + STARTBIN2; // sum of bin in range
           sum += vReal[bin];
         }
-        ledmatrix[i] = (ledmatrix[i] + sqrt(sum)) / 2;
+        ledmatrix[i] = (ledmatrix[i] + (sqrt(sum)/2)) / 2;
       }
 
       if (!fftserial) {
